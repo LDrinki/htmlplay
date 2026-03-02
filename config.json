@@ -1,0 +1,59 @@
+{
+  "platform": {
+    "name": "HTMLplay",
+    "tagline": "10,000+ Free HTML5 Games. No Download. No Login.",
+    "url": "https://htmlplay.io",
+    "logo": "/assets/icons/logo.svg",
+    "favicon": "/assets/icons/favicon.ico",
+    "themeColor": "#c8ff00",
+    "locale": "en",
+    "adsEnabled": true,
+    "adsProvider": "google",
+    "analyticsId": "G-XXXXXXXXXX"
+  },
+  "categories": [
+    { "slug": "action",    "label": "Action",    "icon": "⚡", "color": "#ff4444" },
+    { "slug": "arcade",    "label": "Arcade",    "icon": "🕹️", "color": "#c8ff00" },
+    { "slug": "puzzle",    "label": "Puzzle",    "icon": "🧩", "color": "#44aaff" },
+    { "slug": "racing",    "label": "Racing",    "icon": "🏎️", "color": "#ff8800" },
+    { "slug": "sports",    "label": "Sports",    "icon": "⚽", "color": "#00cc66" },
+    { "slug": "horror",    "label": "Horror",    "icon": "💀", "color": "#aa00ff" },
+    { "slug": "idle",      "label": "Idle",      "icon": "💰", "color": "#ffcc00" },
+    { "slug": "shooter",   "label": "Shooter",   "icon": "🔫", "color": "#ff2255" },
+    { "slug": "adventure", "label": "Adventure", "icon": "🗺️", "color": "#00ddcc" },
+    { "slug": "multiplayer","label": "Multiplayer","icon": "👥", "color": "#ff66cc" }
+  ],
+  "chunking": {
+    "chunkSize": 50,
+    "initialLoad": 20,
+    "lazyThreshold": 300
+  },
+  "ads": {
+    "zones": {
+      "leaderboard_top":    { "id": "div-gpt-ad-top",     "size": [728, 90],   "sticky": false },
+      "sidebar_right":      { "id": "div-gpt-ad-sidebar",  "size": [300, 250],  "sticky": true  },
+      "between_games":      { "id": "div-gpt-ad-between",  "size": [320, 100],  "sticky": false },
+      "preroll_overlay":    { "id": "div-gpt-ad-preroll",  "size": [640, 480],  "sticky": false },
+      "game_footer":        { "id": "div-gpt-ad-footer",   "size": [728, 90],   "sticky": false }
+    },
+    "scrollTriggerThreshold": 600,
+    "prerollEnabled": true,
+    "prerollDuration": 5
+  },
+  "seo": {
+    "titleTemplate": "{gameName} - Play Free Online | HTMLplay",
+    "categoryTemplate": "Free {category} Games - Play Online | HTMLplay",
+    "defaultOgImage": "/assets/og-default.jpg",
+    "structuredDataOrg": {
+      "@type": "Organization",
+      "name": "HTMLplay",
+      "url": "https://htmlplay.io"
+    }
+  },
+  "engagement": {
+    "streakResetHours": 24,
+    "achievementThresholds": [1, 5, 10, 25, 50, 100],
+    "recentlyPlayedMax": 12,
+    "recommendationCount": 6
+  }
+}

@@ -1,0 +1,25 @@
+# HTMLplay _redirects — Cloudflare Pages SPA routing
+#
+# All routes serve index.html (client-side router handles rendering).
+# 200 = rewrite (not redirect) — SPA pattern.
+# Specific file paths are NOT rewritten (they serve actual files).
+
+# Static assets passthrough (handled by _headers, not redirected)
+/assets/*  /assets/:splat  200
+/data/*    /data/:splat    200
+/styles/*  /styles/:splat  200
+/scripts/* /scripts/:splat 200
+/games/*   /games/:splat   200
+
+# Sitemap + robots (real files)
+/sitemap.xml    /sitemap.xml    200
+/robots.txt     /robots.txt     200
+/manifest.json  /manifest.json  200
+
+# Legacy URL normalisation
+/game.html?id=:slug    /game/:slug    301
+/play/:slug            /game/:slug    301
+/games/:slug           /game/:slug    301
+
+# SPA catch-all (must be last)
+/*  /index.html  200

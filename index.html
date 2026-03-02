@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0d0d0f">
+
+  <!-- Critical SEO (updated dynamically by app.js for SPA pages) -->
+  <title>HTMLplay — Free HTML5 Games Online. 10,000+ Games. No Download.</title>
+  <meta name="description" content="Play thousands of free HTML5 games instantly in your browser. No download, no login required. Action, puzzle, racing, horror, sports and more.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://htmlplay.io/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="HTMLplay — Free HTML5 Games Online">
+  <meta property="og:description" content="Play thousands of free HTML5 games instantly. No download required.">
+  <meta property="og:url" content="https://htmlplay.io/">
+  <meta property="og:image" content="https://htmlplay.io/assets/og-default.jpg">
+  <meta property="og:site_name" content="HTMLplay">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="HTMLplay — Free HTML5 Games">
+  <meta name="twitter:description" content="10,000+ free HTML5 games. Play instantly in browser.">
+
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com">
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+
+  <!-- Favicon -->
+  <link rel="icon" href="/assets/icons/favicon.ico" sizes="any">
+  <link rel="icon" href="/assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.json">
+
+  <!-- Critical CSS inlined for LCP -->
+  <style>
+    /* CRITICAL PATH — only what's needed before first paint */
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-size:16px;scroll-behavior:smooth}
+    body{font-family:'Sora',sans-serif;background:#0d0d0f;color:#f0f0f2;min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    #header{position:sticky;top:0;z-index:1000;height:60px;background:rgba(13,13,15,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(200,255,0,0.08);display:flex;align-items:center;padding:0 20px;gap:20px}
+    .logo{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:0.04em;color:#c8ff00;flex-shrink:0;text-shadow:0 0 24px rgba(200,255,0,0.35)}
+    .logo span{color:#f0f0f2}
+    #layout{display:flex;max-width:1440px;margin:0 auto;padding:0 16px}
+    #main{flex:1;min-width:0;padding:24px 16px}
+    .card-skeleton{background:#16161d;border:1px solid #222230;border-radius:10px;overflow:hidden}
+    .skeleton-thumb{width:100%;aspect-ratio:4/3;background:linear-gradient(90deg,#111116 25%,#222230 50%,#111116 75%);background-size:200% 100%;animation:shimmer 1.4s infinite}
+    @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+    .game-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-bottom:32px}
+    @media(max-width:480px){.game-grid{grid-template-columns:repeat(2,1fr)}}
+    .hidden{display:none!important}
+  </style>
+
+  <!-- Deferred full CSS -->
+  <link rel="stylesheet" href="/styles/main.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="/styles/main.css"></noscript>
+
+  <!-- Fonts (display=swap prevents FOIT) -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=Sora:wght@300;400;600;700&display=swap" media="print" onload="this.media='all'">
+
+  <!-- Structured Data — Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "HTMLplay",
+    "url": "https://htmlplay.io",
+    "description": "Free HTML5 games platform. Play thousands of games online instantly.",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://htmlplay.io/?search={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <!-- Google Analytics (async, non-blocking) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX', { send_page_view: false }); // SPA: manual tracking
+  </script>
+</head>
+
+<body>
+
+<!-- ═══════════════════════ HEADER ════════════════════════ -->
+<header id="header" role="banner">
+  <a href="/" class="logo" aria-label="HTMLplay Home">HTML<span>play</span></a>
+
+  <div class="search-wrap" role="search">
+    <span class="search-icon" aria-hidden="true">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+      </svg>
+    </span>
+    <input
+      type="search"
+      id="search-input"
+      placeholder="Search 10,000+ games..."
+      autocomplete="off"
+      aria-label="Search games"
+      aria-controls="search-results"
+      aria-expanded="false"
+    >
+    <div id="search-results" role="listbox" aria-label="Search suggestions"></div>
+  </div>
+
+  <div class="header-actions">
+    <div class="streak-chip" id="streak-chip" aria-label="Daily streak" style="display:none">
+      <span class="flame">🔥</span>
+      <span class="streak-count">0 day streak</span>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════════════ LAYOUT ════════════════════════ -->
+<div id="layout">
+
+  <!-- Sidebar Navigation -->
+  <nav id="sidebar" aria-label="Game categories">
+    <div class="sidebar-section">
+      <div class="sidebar-label">Navigate</div>
+      <a class="sidebar-link active" href="/" data-page="home">
+        <span class="icon">🏠</span> Home
+      </a>
+      <a class="sidebar-link" href="/trending" data-page="trending">
+        <span class="icon">🔥</span> Trending
+      </a>
+      <a class="sidebar-link" href="/new" data-page="new">
+        <span class="icon">✨</span> New Games
+      </a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">Categories</div>
+      <a class="sidebar-link" href="/category/action">
+        <span class="icon">⚡</span> Action <span class="count">2.4k</span>
+      </a>
+      <a class="sidebar-link" href="/category/arcade">
+        <span class="icon">🕹️</span> Arcade <span class="count">1.8k</span>
+      </a>
+      <a class="sidebar-link" href="/category/puzzle">
+        <span class="icon">🧩</span> Puzzle <span class="count">1.2k</span>
+      </a>
+      <a class="sidebar-link" href="/category/racing">
+        <span class="icon">🏎️</span> Racing <span class="count">890</span>
+      </a>
+      <a class="sidebar-link" href="/category/sports">
+        <span class="icon">⚽</span> Sports <span class="count">650</span>
+      </a>
+      <a class="sidebar-link" href="/category/horror">
+        <span class="icon">💀</span> Horror <span class="count">320</span>
+      </a>
+      <a class="sidebar-link" href="/category/idle">
+        <span class="icon">💰</span> Idle / Clicker <span class="count">480</span>
+      </a>
+      <a class="sidebar-link" href="/category/multiplayer">
+        <span class="icon">👥</span> Multiplayer <span class="count">240</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main id="main" role="main">
+
+    <!-- Ad: Leaderboard Top -->
+    <div class="ad-leaderboard" role="complementary" aria-label="Advertisement">
+      <!-- Google AdSense / GPT slot injected here -->
+      <span>Advertisement — 728×90</span>
+    </div>
+
+    <!-- ══════ PAGE: HOME ══════ -->
+    <div id="page-home">
+
+      <!-- Hero -->
+      <section id="hero" aria-label="Platform overview">
+        <div class="hero-grid" aria-hidden="true"></div>
+        <div class="hero-stats">
+          <div class="stat">
+            <div class="stat-val">10K+</div>
+            <div class="stat-lbl">Games</div>
+          </div>
+          <div class="stat">
+            <div class="stat-val">Free</div>
+            <div class="stat-lbl">Always</div>
+          </div>
+          <div class="stat">
+            <div class="stat-val">0s</div>
+            <div class="stat-lbl">Load Time</div>
+          </div>
+        </div>
+        <div class="hero-content">
+          <div class="hero-label">🎮 10,000+ HTML5 Games</div>
+          <h1 class="hero-title">PLAY<br>ANYTHING.</h1>
+          <p class="hero-sub">No downloads. No logins. Just games. The largest free browser gaming platform.</p>
+          <a href="#games" class="hero-cta">BROWSE GAMES ↓</a>
+        </div>
+      </section>
+
+      <!-- Recently Played -->
+      <section id="recently-played" class="hidden" aria-label="Recently played games">
+        <div class="section-header">
+          <h2 class="section-title">CONTINUE PLAYING</h2>
+        </div>
+        <div class="recent-scroll" id="recent-scroll"></div>
+      </section>
+
+      <!-- Category Pills -->
+      <div class="cat-pills" role="toolbar" aria-label="Filter by category">
+        <button class="cat-pill active" data-category="all">🎮 All Games</button>
+        <button class="cat-pill" data-category="action">⚡ Action</button>
+        <button class="cat-pill" data-category="arcade">🕹️ Arcade</button>
+        <button class="cat-pill" data-category="puzzle">🧩 Puzzle</button>
+        <button class="cat-pill" data-category="racing">🏎️ Racing</button>
+        <button class="cat-pill" data-category="sports">⚽ Sports</button>
+        <button class="cat-pill" data-category="horror">💀 Horror</button>
+        <button class="cat-pill" data-category="idle">💰 Idle</button>
+        <button class="cat-pill" data-category="multiplayer">👥 Multi</button>
+      </div>
+
+      <!-- Trending Section -->
+      <div class="section-header" id="games">
+        <h2 class="section-title">TRENDING NOW</h2>
+        <span class="section-badge alert">🔥 LIVE</span>
+        <a href="/trending" class="view-all" aria-label="View all trending games">View all →</a>
+      </div>
+
+      <!-- Game Grid (populated by app.js) -->
+      <div class="game-grid" id="home-grid" role="list" aria-label="Game list"></div>
+
+      <!-- Ad: Between Games (injected by AdManager) -->
+
+      <!-- New Releases -->
+      <div class="section-header" style="margin-top:16px">
+        <h2 class="section-title">NEW RELEASES</h2>
+        <span class="section-badge">✨ FRESH</span>
+        <a href="/new" class="view-all">View all →</a>
+      </div>
+      <div class="game-grid" id="new-grid" aria-label="New games"></div>
+
+    </div>
+    <!-- ══ END PAGE: HOME ══ -->
+
+    <!-- ══════ PAGE: GAME ══════ -->
+    <div id="page-game" class="hidden"></div>
+
+    <!-- ══════ PAGE: CATEGORY ══════ -->
+    <div id="page-category" class="hidden"></div>
+
+  </main>
+
+</div>
+<!-- ══ END LAYOUT ══ -->
+
+<!-- ═══════════════════════ ACHIEVEMENT TOAST ══════════════ -->
+<div id="achievement-toast" role="alert" aria-live="polite" aria-atomic="true">
+  <div class="toast-icon">🏆</div>
+  <div class="toast-text">
+    <div class="toast-title">Achievement Unlocked</div>
+    <div class="toast-name"></div>
+    <div class="toast-desc"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ MOBILE CONTROLLER ══════════════ -->
+<div id="mobile-controller" aria-hidden="true"></div>
+
+<!-- ═══════════════════════ FOOTER ═════════════════════════ -->
+<footer id="footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo">HTML<span>play</span></div>
+      <p>The world's largest free HTML5 game platform. Play any game, anywhere, instantly.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Categories</h4>
+      <a href="/category/action">Action</a>
+      <a href="/category/arcade">Arcade</a>
+      <a href="/category/puzzle">Puzzle</a>
+      <a href="/category/racing">Racing</a>
+      <a href="/category/sports">Sports</a>
+      <a href="/category/horror">Horror</a>
+    </div>
+    <div class="footer-col">
+      <h4>Platform</h4>
+      <a href="/about">About</a>
+      <a href="/new">New Games</a>
+      <a href="/trending">Trending</a>
+      <a href="/sitemap.xml">Sitemap</a>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/terms">Terms of Service</a>
+      <a href="/dmca">DMCA</a>
+      <a href="/contact">Contact</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 HTMLplay. All rights reserved.</span>
+    <span style="font-family:'Bebas Neue',sans-serif;color:var(--acid);letter-spacing:0.06em">HTML<span style="color:var(--text-2)">play</span></span>
+  </div>
+</footer>
+
+<!-- ═══════════════════════ SCRIPTS ════════════════════════ -->
+<!-- Module scripts are deferred by default -->
+<script type="module" src="/scripts/app.js"></script>
+
+<!-- AdSense (async) -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+
+</body>
+</html>

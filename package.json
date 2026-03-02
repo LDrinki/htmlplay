@@ -1,0 +1,24 @@
+{
+  "name": "htmlplay",
+  "version": "1.0.0",
+  "description": "HTMLplay — High-performance HTML5 game aggregation platform",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "node pipeline/generate-db.js && node pipeline/generate-sitemap.js",
+    "dev": "npx serve . -p 3000 --cors",
+    "db": "node pipeline/generate-db.js",
+    "sitemap": "node pipeline/generate-sitemap.js",
+    "images": "node pipeline/optimize-images.js",
+    "check": "node pipeline/check-links.js",
+    "validate": "node -e \"const i=require('./data/games-index.json');console.log('✅',i.total,'games,',i.totalChunks,'chunks')\"",
+    "clean": "rm -rf data/chunks/* data/games-index.json sitemap*.xml"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "devDependencies": {
+    "sharp": "^0.33.0",
+    "serve": "^14.0.0"
+  }
+}

@@ -1,0 +1,67 @@
+/*
+  # HTMLplay Cloudflare Pages _headers
+  #
+  # Strategy:
+  # - HTML pages: no-cache (always fresh for SEO/dynamic meta)
+  # - JS/CSS/fonts: long cache + immutable (content-addressed via build hash)
+  # - JSON data chunks: 1hr CDN cache (games data changes rarely)
+  # - Images/thumbnails: 30-day cache
+  # - Security headers: strict but gaming-compatible (iframe needs relaxed CSP)
+*/
+
+# ── Security + Performance: ALL pages ──────────────────────
+/*
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), payment=()
+  X-DNS-Prefetch-Control: on
+
+# ── HTML pages: no-cache (SSG but personalised via JS) ─────
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/
+  Cache-Control: public, max-age=0, must-revalidate
+
+# ── JS/CSS: Long cache (filenames include content hash) ────
+/scripts/*.js
+  Cache-Control: public, max-age=31536000, immutable
+  Vary: Accept-Encoding
+
+/styles/*.css
+  Cache-Control: public, max-age=31536000, immutable
+  Vary: Accept-Encoding
+
+# ── JSON Chunks: 1 hour CDN, stale-while-revalidate ────────
+/data/chunks/*.json
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+  Vary: Accept-Encoding
+
+# ── Index / Config: 5 min CDN cache ────────────────────────
+/data/games-index.json
+  Cache-Control: public, max-age=300, stale-while-revalidate=3600
+
+/data/config.json
+  Cache-Control: public, max-age=300, stale-while-revalidate=3600
+
+# ── Thumbnails: 30 days ─────────────────────────────────────
+/assets/thumbnails/*
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=604800
+
+/assets/featured/*
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=604800
+
+# ── Icons/Fonts: Immutable ──────────────────────────────────
+/assets/icons/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# ── Sitemap: 24hr cache ─────────────────────────────────────
+/sitemap.xml
+  Cache-Control: public, max-age=86400
+  Content-Type: application/xml
+
+# ── Robots ──────────────────────────────────────────────────
+/robots.txt
+  Cache-Control: public, max-age=86400
